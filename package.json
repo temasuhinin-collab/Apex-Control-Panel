@@ -1,0 +1,34 @@
+{
+  "name": "apex-control-panel",
+  "version": "1.0.0",
+  "description": "A clean Apex Legends settings and profile panel by Artem Sukhinin",
+  "main": "main.js",
+  "author": "Artem Sukhinin",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "32.3.3",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.artemsukhinin.apexcontrolpanel",
+    "productName": "Apex Control Panel",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": [
+      "main.js",
+      "index.html",
+      "styles.css",
+      "renderer.js",
+      "README.md",
+      "package.json"
+    ],
+    "win": {
+      "target": [{ "target": "portable", "arch": ["x64"] }],
+      "artifactName": "Apex-Control-Panel-${version}-win-${arch}.${ext}"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Control Panel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">A<span>+</span></div>
+        <div><strong>APEX</strong><small>CONTROL PANEL</small></div>
+      </div>
+      <div class="side-label">РАБОЧАЯ ОБЛАСТЬ</div>
+      <button class="nav-item active" data-page="overview"><span>◈</span> Обзор</button>
+      <button class="nav-item" data-page="sensitivity"><span>⌖</span> Чувствительность</button>
+      <button class="nav-item" data-page="profiles"><span>▤</span> Профили</button>
+      <button class="nav-item" data-page="performance"><span>▥</span> Производительность</button>
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div><span>Локальный режим</span>
+        <div class="side-divider"></div>
+        <div class="author-label">РАЗРАБОТЧИК</div>
+        <strong class="author-name">Artem Sukhinin</strong>
+        <small class="version">Версия 1.0.0</small>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">APEX LEGENDS / PERSONAL SETUP</div><h1 id="page-title">Панель управления</h1></div>
+        <div class="top-actions"><span class="pill"><i></i> Настройки на этом ПК</span><button id="reset-all" class="icon-button" title="Сбросить настройки">↺</button></div>
+      </header>
+
+      <section class="page active" id="page-overview">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="hero-tag">YOUR SETUP. YOUR RULES.</div>
+            <h2>Настрой игру<br><em>под себя.</em></h2>
+            <p>Удобное место для игровых профилей, чувствительности и параметров производительности.</p>
+            <button class="primary-btn" data-go="sensitivity">Настроить чувствительность <span>→</span></button>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="ring ring-one"></div><div class="ring ring-two"></div><div class="crosshair">+</div><div class="hero-number">01</div></div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">БЫСТРЫЙ ДОСТУП</span><h3>Твоя конфигурация</h3></div><span class="muted">Изменения сохраняются локально</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Чувствительность мыши</span><span class="stat-icon">⌖</span></div><strong id="stat-sens">1.5</strong><small>Игровой множитель</small><button data-go="sensitivity" class="text-link">Изменить →</button></article>
+          <article class="stat-card"><div class="stat-top"><span>DPI мыши</span><span class="stat-icon">◉</span></div><strong id="stat-dpi">800</strong><small>Текущее значение профиля</small><button data-go="sensitivity" class="text-link">Изменить →</button></article>
+          <article class="stat-card"><div class="stat-top"><span>Активный профиль</span><span class="stat-icon">▤</span></div><strong id="stat-profile" class="profile-stat">Сбалансированный</strong><small>Настройки панели</small><button data-go="profiles" class="text-link">Профили →</button></article>
+        </div>
+        <div class="notice"><div class="notice-icon">i</div><div><strong>Важно</strong><p>Панель хранит твои заметки и значения профилей. Она не меняет файлы игры автоматически и не двигает мышь для автоматической компенсации отдачи.</p></div></div>
+      </section>
+
+      <section class="page" id="page-sensitivity">
+        <div class="page-intro"><span class="eyebrow">AIM & CONTROL</span><h2>Чувствительность</h2><p>Подбери комфортные значения и сохрани собственный пресет.</p></div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-head"><div><h3>Настройки мыши</h3><p>Базовые игровые параметры</p></div><span class="panel-symbol">⌖</span></div>
+            <label class="field-label" for="dpi">DPI мыши <output id="dpi-out">800</output></label>
+            <input id="dpi" type="range" min="100" max="3200" step="50" value="800">
+            <div class="range-scale"><span>100</span><span>3200</span></div>
+            <label class="field-label" for="sens">Чувствительность в игре <output id="sens-out">1.5</output></label>
+            <input id="sens" type="range" min="0.1" max="5" step="0.1" value="1.5">
+            <div class="range-scale"><span>0.1</span><span>5.0</span></div>
+            <label class="field-label" for="ads">Множитель ADS <output id="ads-out">1.0</output></label>
+            <input id="ads" type="range" min="0.5" max="2" step="0.1" value="1.0">
+            <div class="range-scale"><span>0.5</span><span>2.0</span></div>
+            <div class="field-row"><label for="fov">Поле зрения (FOV)</label><select id="fov"><option>90</option><option>96</option><option selected>100</option><option>104</option><option>110</option><option>120</option></select></div>
+            <div class="field-row"><label for="raw-input">Ввод мыши</label><select id="raw-input"><option value="on">Raw Input — включён</option><option value="off">Raw Input — выключен</option></select></div>
+            <div class="button-row"><button class="primary-btn" id="save-sens">Сохранить параметры</button><button class="secondary-btn" id="defaults-sens">По умолчанию</button></div>
+          </article>
+          <article class="panel tips-panel">
+            <div class="panel-head"><div><h3>Подсказки</h3><p>Как настроить комфортно</p></div><span class="panel-symbol">✦</span></div>
+            <div class="tip"><span>01</span><div><strong>Меняй по одному параметру</strong><p>Так проще понять, что именно помогает лучше контролировать прицел.</p></div></div>
+            <div class="tip"><span>02</span><div><strong>Сохраняй привычные значения</strong><p>Используй профили для разных мышек, разрешений или игровых режимов.</p></div></div>
+            <div class="tip"><span>03</span><div><strong>Проверяй в тренировочном режиме</strong><p>Дай себе время привыкнуть к изменениям прежде, чем менять их снова.</p></div></div>
+            <div class="mini-metric"><span>eDPI — ориентировочный показатель</span><strong id="edpi">1200</strong><small>DPI × чувствительность</small></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-profiles">
+        <div class="page-intro"><span class="eyebrow">PRESETS</span><h2>Игровые профили</h2><p>Создавай, выбирай и переименовывай собственные наборы параметров.</p></div>
+        <div class="profile-toolbar"><div class="profile-count"><strong id="profile-count">3</strong><span>профиля</span></div><button id="new-profile" class="primary-btn">＋ Новый профиль</button></div>
+        <div id="profile-list" class="profile-grid"></div>
+        <div class="notice"><div class="notice-icon">i</div><div><strong>Как это работает</strong><p>Профиль сохраняет значения внутри приложения. Чтобы применить их в игре, перенеси значения вручную в настройки Apex Legends.</p></div></div>
+      </section>
+
+      <section class="page" id="page-performance">
+        <div class="page-intro"><span class="eyebrow">PC TUNING</span><h2>Производительность</h2><p>Чек-лист и заметки для настройки плавности игры. Без рискованных системных твиков.</p></div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-head"><div><h3>Чек-лист перед игрой</h3><p>Отмечай выполненные пункты</p></div><span class="panel-symbol">▥</span></div>
+            <div class="checklist">
+              <label class="check-item"><input type="checkbox" data-check="1"><span><strong>Обновить драйвер видеокарты</strong><small>Используй официальный драйвер NVIDIA для RTX 3060 Ti.</small></span></label>
+              <label class="check-item"><input type="checkbox" data-check="2"><span><strong>Проверить частоту монитора</strong><small>Убедись, что в Windows выбрана максимальная поддерживаемая частота.</small></span></label>
+              <label class="check-item"><input type="checkbox" data-check="3"><span><strong>Закрыть тяжёлые фоновые приложения</strong><small>Особенно браузеры с большим количеством вкладок и записи видео.</small></span></label>
+              <label class="check-item"><input type="checkbox" data-check="4"><span><strong>Проверить свободное место</strong><small>Оставляй запас места на системном диске для обновлений и кэша.</small></span></label>
+              <label class="check-item"><input type="checkbox" data-check="5"><span><strong>Проверить FPS и frametime</strong><small>Сравнивай настройки в одном и том же игровом сценарии.</small></span></label>
+            </div>
+            <div class="progress-line"><div id="check-progress"></div></div><div class="progress-caption"><span id="check-caption">0 из 5 выполнено</span><span id="check-percent">0%</span></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><h3>Мои заметки</h3><p>Сохраняются на этом компьютере</p></div><span class="panel-symbol">✎</span></div>
+            <label class="field-label" for="notes">Заметки о настройках</label>
+            <textarea id="notes" rows="7" placeholder="Например: FPS на карте, настройки графики, версия драйвера..."></textarea>
+            <button class="primary-btn full-btn" id="save-notes">Сохранить заметки</button>
+            <p id="notes-status" class="inline-status"></p>
+            <div class="safe-tip"><strong>Рекомендуется</strong><p>Меняй по одному параметру и записывай результаты. Не используй неизвестные «оптимизаторы», которые отключают службы Windows или вмешиваются в античит.</p></div>
+          </article>
+        </div>
+      </section>
+      <footer><span>APEX CONTROL PANEL</span><span>Создано <strong>Artem Sukhinin</strong> · Локальное приложение</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="renderer.js"></script>
+</body>
+</html>
